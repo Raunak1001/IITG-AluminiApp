@@ -7,28 +7,14 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_chapters"
-            android:title="chapters" />
+            android:title="Chapters" />
         <item
             android:id="@+id/nav_give_back"
             android:title="Give Back to IITG" />
         <item
-            android:id="@+id/nav_mentor"
-            android:title="Mentorship" />
-        <item
             android:id="@+id/nav_blog"
             android:title="Blog" />
-        <item
-            android:id="@+id/nav_iitg_aaer"
-            android:title="IITG AA&amp;ER" />
-        <item
-            android:id="@+id/nav_sail"
-            android:title="SAIL" />
-        <item
-            android:id="@+id/nav_iitgaa_merch"
-            android:title="IITGAA Merchandise" />
-
     </group>
-
 
 
 </menu>

@@ -6,22 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class reminders extends Fragment {
-
-    public reminders() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+/**
+ * Created by ankit on 13/4/16.
+ */
+public class Give_Back extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reminders, container, false);
+        return inflater.inflate(R.layout.fragment_giveback, container, false);
     }
-
 }
