@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,22 +34,5 @@ public class News extends Fragment {
             }
         });
         wv.loadUrl("http://iitgaa.org/news/");
-
-
     }
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
-                    if (wv.canGoBack()) {
-                        wv.goBack();
-                    }
-                    return true;
-            }
-
-        }
-        return onKeyDown(keyCode, event);
-    }
-
 }
