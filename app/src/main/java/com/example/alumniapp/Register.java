@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.andreabaccega.widget.EditTextValidator;
+import com.andreabaccega.widget.FormEditText;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -35,23 +37,24 @@ import java.util.List;
 public class Register extends AppCompatActivity {
 
     MaterialBetterSpinner spinner;
-    EditText pass, email, phone;
+    EditText pass, phone,name;
     Button register;
-    String pass_string, email_string, phone_string;
+    String pass_string, email_string, phone_string,name_string;
     private final String TAG = Register.class.getSimpleName();
     ProgressDialog dialog;
     LinearLayout layout;
     String branch_string = "";
     SQLiteHandler db;
     SessionManager sessionmanager;
+    com.andreabaccega.widget.FormEditText email;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-
+name= (EditText) findViewById(R.id.register_name);
         pass = (EditText) findViewById(R.id.register_password);
-        email = (EditText) findViewById(R.id.register_emailId);
+        email = (FormEditText) findViewById(R.id.register_emailId);
         phone = (EditText) findViewById(R.id.register_phone_number);
         register = (Button) findViewById(R.id.register);
         db = new SQLiteHandler(this);
@@ -165,26 +168,29 @@ public class Register extends AppCompatActivity {
                 pass_string = pass.getText().toString();
                 email_string = email.getText().toString();
                 phone_string = phone.getText().toString();
+                name_string=name.getText().toString();
+
+                if (email.testValidity()) {
+                    if (!branch_string.equals("") && !pass_string.isEmpty() && !phone_string.isEmpty() && !name_string.isEmpty()) {
+                        if (phone_string.length() == 10) {
 
 
-                if (!branch_string.equals("") && !email_string.isEmpty() && !pass_string.isEmpty() && !phone_string.isEmpty()) {
-                    if (phone_string.length() == 10) {
+                            registerUser();
 
 
-                        registerUser();
+                        } else {
+                            Snackbar.make(v, "Enter a 10 digit Phone Number", Snackbar.LENGTH_SHORT)
+                                    .setAction("Action", null).show();
+                        }
 
 
                     } else {
-                        Snackbar.make(v, "Enter a 10 digit Phone Number", Snackbar.LENGTH_SHORT)
+
+                        Snackbar.make(v, "Enter All The Fields", Snackbar.LENGTH_SHORT)
                                 .setAction("Action", null).show();
+                        Log.d(TAG, branch_string + "  " + email_string + " " + pass_string + "  " + phone_string);
+
                     }
-
-
-                } else {
-
-                    Snackbar.make(v, "Enter All The Fields", Snackbar.LENGTH_SHORT)
-                            .setAction("Action", null).show();
-                    Log.d(TAG, branch_string + "  " + email_string + " " + pass_string + "  " + phone_string);
 
                 }
 
@@ -204,12 +210,13 @@ public class Register extends AppCompatActivity {
         params.put("number", phone_string);
         params.put("branch", branch_string);
         params.put("password", pass_string);
+        params.put("name",name_string);
 
         JSONObject json = new JSONObject(params);
 
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                "http://ankit21.16mb.com/alum/registerUser.php",
+                "http://iitgaa.hol.es/app/registerUser.php",
                 json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -230,7 +237,7 @@ public class Register extends AppCompatActivity {
                         //setrUser(details);
                         sessionmanager.setLogin(true);
 
-                        Intent intent =new Intent(Register.this, MainActivity.class);
+                        Intent intent = new Intent(Register.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
                         finish();
@@ -277,6 +284,7 @@ public class Register extends AppCompatActivity {
         sessionmanager.setPAssword(details.getString("password"));
         sessionmanager.setBranch(details.getString("branch"));
         sessionmanager.setNumber(details.getString("number"));
+        sessionmanager.setName(details.getString("name"));
 
     }
 }

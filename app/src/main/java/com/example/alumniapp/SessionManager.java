@@ -32,6 +32,7 @@ public class SessionManager {
     private static final String KEY_BRANCH="branch";
     private static final String KEY_NUMBER="number";
     private static final String KEY_SAVED_USERNAME = "savedUsername";
+    private static final String KEY_NAME="name";
 
 
 
@@ -102,7 +103,12 @@ public class SessionManager {
         editor.commit();
 
     }
+    public void setName(String name) {
 
+        editor.putString(KEY_NAME, name);
+        editor.commit();
+
+    }
 
 
 
@@ -128,6 +134,11 @@ public class SessionManager {
     public String getUsername() {
         return pref.getString(KEY_SAVED_USERNAME, "");
     }
+
+    public String getname() {
+        return pref.getString(KEY_NAME, "");
+    }
+
     public void clearAll() {
         editor.clear();
         editor.commit();

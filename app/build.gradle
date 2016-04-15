@@ -29,6 +29,7 @@ dependencies {
     compile 'com.mcxiaoke.volley:library-aar:1.0.1'
     compile 'com.weiwangcn.betterspinner:library-material:1.1.0'
     compile 'com.android.support:cardview-v7:23.2.1'
+    compile 'com.andreabaccega:android-form-edittext:1.2.1@aar'
 
     compile files('libs/gcm.jar')
 }

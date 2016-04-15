@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.andreabaccega.widget.FormEditText;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -30,7 +31,7 @@ import java.util.List;
 
 public class Update extends AppCompatActivity {
 
-    EditText email,password,number;
+    EditText password,number,name;
     Button done;
     SessionManager sessionManager;
     MaterialBetterSpinner spinner;
@@ -39,18 +40,19 @@ String branch_string="";
     final String[] error = new String[1];
     private final String TAG = Register.class.getSimpleName();
     LinearLayout layout;
+    com.andreabaccega.widget.FormEditText email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        email= (EditText) findViewById(R.id.update_email);
+        email= (FormEditText) findViewById(R.id.update_email);
         number= (EditText) findViewById(R.id.update_number);
         password= (EditText) findViewById(R.id.update_password);
         done= (Button) findViewById(R.id.update_button);
         layout= (LinearLayout) findViewById(R.id.update_layout);
-
+        name= (EditText) findViewById(R.id.update_name);
         dialog=new ProgressDialog(this);
         dialog.setMessage("Updating Profile");
         dialog.setCancelable(false);
@@ -59,7 +61,8 @@ String branch_string="";
         email.setText(sessionManager.getEmail());
         password.setText(sessionManager.getpassword());
         number.setText(sessionManager.getnumber());
-        spinner = (MaterialBetterSpinner) findViewById(R.id.choice);
+        name.setText(sessionManager.getname());
+        spinner = (MaterialBetterSpinner) findViewById(R.id.update_branch);
 
         List<String> categories = new ArrayList<String>();
         categories.add("Biosciences and Bioengineering");
@@ -163,7 +166,8 @@ String branch_string="";
             @Override
             public void onClick(View v) {
 
-                if(email.getText().length()!=0 && password.getText().length()!=0 && !branch_string.equals("")){
+                if(email.testValidity()){
+                if(password.getText().length()!=0 && !branch_string.equals("") && name.getText().length()!=0){
 
                     if (number.getText().length()==10){
                         update_user();
@@ -174,11 +178,16 @@ String branch_string="";
                                 .setAction("Action", null).show();
                     }
 
-                }else{
+                } else {
 
-                    Snackbar.make(v, "Enter All The Fields", Snackbar.LENGTH_SHORT)
+                    Snackbar.make(v, "Enter All Fields", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();
+                }
+            }
+            else {
 
+                    Snackbar.make(v, "Enter Valid Email Address", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
                 }
 
             }
@@ -195,13 +204,14 @@ String branch_string="";
         params.put("branch", branch_string);
         params.put("password", password.getText().toString());
         params.put("old_email", sessionManager.getEmail());
+        params.put("name",name.getText().toString());
 
 
         JSONObject json = new JSONObject(params);
 
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                "http://ankit21.16mb.com/alum/updateUser.php",
+                "http://iitgaa.hol.es/app/updateUser.php",
                 json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:editTextFormExample="http://schemas.android.com/apk/res-auto"
     android:id="@+id/login_screen"
     android:fillViewport="true">
 
@@ -24,17 +25,27 @@
                 android:padding="20dp">
 
 
+                <EditText
+                    android:id="@+id/register_name"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:hint="Name"
+                    />
+                <com.andreabaccega.widget.FormEditText
 
-                        <EditText
-                            android:id="@+id/register_emailId"
-                            android:imeOptions="actionDone"
-                            android:inputType="text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginStart="10dp"
-                            android:hint="Email Id"
-                            />
+                    android:id="@+id/register_emailId"
+                    style="@android:style/Widget.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Email Id:"
+                    android:inputType="textEmailAddress"
+
+                    editTextFormExample:testType="email" />
                 <EditText
                     android:id="@+id/register_phone_number"
                     android:imeOptions="actionDone"

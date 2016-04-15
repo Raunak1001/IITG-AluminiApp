@@ -163,7 +163,7 @@ intent = new Intent(this,MainActivity.class);
             JSONObject credentialsJSON = new JSONObject(loginParams);
             Log.d(TAG, credentialsJSON.toString());
             JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                    "http://ankit21.16mb.com/alum/Login.php",
+                    "http://iitgaa.hol.es/Login.php",
                     credentialsJSON,
                     new Response.Listener<JSONObject>() {
 
@@ -250,7 +250,7 @@ intent = new Intent(this,MainActivity.class);
         sessionManager.setPAssword(details.getString("password"));
         sessionManager.setBranch(details.getString("branch"));
         sessionManager.setNumber(details.getString("number"));
-
+        sessionManager.setName(details.getString("name"));
     }
 
 

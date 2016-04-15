@@ -17,25 +17,24 @@ import java.util.Random;
 
 
 /**
- *  Handling GCM registrations on our server for
- *  the Student Side. When a new registration Id
- *  is assigned to a student, register function
- *  is called to register the user's GCM Registration
- *  Id on our server.
+ * Handling GCM registrations on our server for
+ * the Student Side. When a new registration Id
+ * is assigned to a student, register function
+ * is called to register the user's GCM Registration
+ * Id on our server.
  */
 public final class ServerUtilities {
     private static final int MAX_ATTEMPTS = 5;
     private static final int BACKOFF_MILLI_SECONDS = 2000;
     private static final Random random = new Random();
     public static JSONObject jsonToSend;
-    public static  Context contextReal;
+    public static Context contextReal;
 
     /**
      * Register this account/device pair within the server.
-     *
      */
     public static void register(final Context context, final String regId) {
-contextReal=context;
+        contextReal = context;
 
 
         Log.d("Register", "registering device (regId = " + regId + ")");
@@ -84,24 +83,22 @@ contextReal=context;
      * Unregister this account/device pair within the server.
      */
 
-    public static void register_post(){
+    public static void register_post() {
         String tag_string_req = "req_register";
         Log.d("Sent", jsonToSend.toString());
         JsonObjectRequest strReq = new JsonObjectRequest(Request.Method.POST,
-                "http://ankit21.16mb.com/alum/register.php" ,jsonToSend, new Response.Listener<JSONObject>() {
+                "http://iitgaa.org/app/register.php", jsonToSend, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("Response Server", response.toString());
 
                 try {
-                    String error  = response.getString("error");
+                    String error = response.getString("error");
                     if (error.equals("false")) {
-                        Log.d("REGISTERED" , "Registered On GCM");
-                    }
-                    else
-                    {
-                      //  Toast.makeText(contextReal, response.getString("message"), Toast.LENGTH_SHORT).show();
+                        Log.d("REGISTERED", "Registered On GCM");
+                    } else {
+                        //  Toast.makeText(contextReal, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -118,7 +115,7 @@ contextReal=context;
         });
 
         // Adding request to request queue
-        Log.d("DSF","DSFASF");
+        Log.d("DSF", "DSFASF");
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 

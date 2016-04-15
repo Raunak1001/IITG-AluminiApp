@@ -68,8 +68,8 @@ sessionManager=new SessionManager(this);
         navText = (TextView) v.findViewById(R.id.nav_text);
         navIcon = (TextView) v.findViewById(R.id.nav_icon);
 
-        navText.setText(sessionManager.getEmail());
-        navIcon.setText(sessionManager.getEmail().substring(0,1));
+        navText.setText(sessionManager.getname());
+        navIcon.setText(sessionManager.getname().substring(0,1));
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
