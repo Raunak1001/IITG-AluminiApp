@@ -19,4 +19,48 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="TextView.CircleIcon" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/headline</item>
+        <item name="android:background">@drawable/bg_circular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+
+    </style>
+
+    <style name="TextView.Body1.Thin" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackSecondaryText</item>
+        <item name="android:textSize">@dimen/cardview_body_text_size</item>
+        <item name="customFont">roboto_light.ttf</item>
+
+    </style>
+
+    <style name="TextView.Title.Thin" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/small_headline</item>
+        <item name="customFont">roboto_light.ttf</item>
+
+    </style>
+    <style name="TextView.Title.Note" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/small_headline</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="customFont">roboto_medium.ttf</item>
+    </style>
+
+    <style name="TextView.CircleIcon_header" parent="TextAppearance.AppCompat.Caption">
+    <item name="android:layout_width">60dp</item>
+    <item name="android:layout_height">60dp</item>
+    <item name="android:textColor">@color/colorPrimary</item>
+    <item name="android:textSize">@dimen/headline</item>
+    <item name="android:background">@drawable/bg_circular_header</item>
+    <item name="android:gravity">center</item>
+    <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+</style>
 </resources>

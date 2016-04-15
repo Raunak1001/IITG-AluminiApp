@@ -8,4 +8,7 @@
     <string name="three">Contact</string>
     <string name="title_activity_notification">Notification</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="no_announcements">No Reminders Yet</string>
+    <string name="ANN_TITLE">title</string>
+    <string name="ANN_DESCRIPTION">description</string>
 </resources>

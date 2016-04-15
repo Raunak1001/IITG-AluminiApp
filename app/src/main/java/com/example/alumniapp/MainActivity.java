@@ -1,6 +1,8 @@
 package com.example.alumniapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -15,6 +17,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import com.google.android.gcm.GCMRegistrar;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +31,9 @@ public class MainActivity extends AppCompatActivity
     FragmentTransaction mFragmentTransaction;
     FragmentManager mFragmentManager;
     NavigationView navigationView;
+    AsyncTask<Void, Void, Void> mRegisterTask;
+    TextView navText,navIcon;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +41,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+sessionManager=new SessionManager(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        setupGCM();
 
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -53,6 +62,21 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
+
+        //navigationView.inflateHeaderView(R.layout.nav_header_main);
+        View v = navigationView.getHeaderView(0);
+        navText = (TextView) v.findViewById(R.id.nav_text);
+        navIcon = (TextView) v.findViewById(R.id.nav_icon);
+
+        navText.setText(sessionManager.getEmail());
+        navIcon.setText(sessionManager.getEmail().substring(0,1));
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Profile.class));
+            }
+        });
+
     }
 
 
@@ -128,5 +152,52 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void setupGCM() {
 
+        GCMRegistrar.checkDevice(getApplicationContext());
+
+        // Make sure the manifest was properly set - comment out getApplicationContext() line
+        // while developing the app, then uncomment it when it's ready.
+        //GCMRegistrar.checkManifest(getApplicationContext());
+
+        //registerReceiver(mHandleMessageReceiver, new IntentFilter(
+        //     DISPLAY_MESSAGE_ACTION));
+
+        // Get GCM registration id
+        final String regId = GCMRegistrar.getRegistrationId(getApplicationContext());
+        // Check if regId already presents
+        if (regId.equals("")) {
+            // Registration is not present, register now with GCM
+            GCMRegistrar.register(getApplicationContext(), "21096671799");
+
+        } else {
+            // Device is already registered on GCM
+            if (GCMRegistrar.isRegisteredOnServer(getApplicationContext())) {
+                // Skips registration.
+                // Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
+            } else {
+                // Try to register again, but not in the UI thread.
+                // It's also necessary to cancel the thread onDestroy(),
+                // hence the use of AsyncTask instead of a raw thread.
+                final Context context = getApplicationContext();
+                mRegisterTask = new AsyncTask<Void, Void, Void>() {
+
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        // Register on our server
+                        // On server updates the student regId
+                        ServerUtilities.register(context, regId);
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void result) {
+                        mRegisterTask = null;
+                    }
+
+                };
+                mRegisterTask.execute(null, null, null);
+            }
+        }
+    }
 }

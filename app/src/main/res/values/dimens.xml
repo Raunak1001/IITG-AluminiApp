@@ -7,4 +7,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="headline">24sp</dimen>
+    <dimen name="small_headline">20sp</dimen>
+    <dimen name="cardview_body_text_size">16sp</dimen>
 </resources>

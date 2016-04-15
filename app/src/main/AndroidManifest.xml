@@ -2,9 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alumniapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <permission
+        android:name="com.example.alumniapp.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.alumniapp.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
+        android:name=".AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +22,16 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Notification"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".Register"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,9 +39,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Notification"
-            android:label="@string/title_activity_notification"
-            android:theme="@style/AppTheme"></activity>
+            android:name=".AnouncementView"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".Profile"
+            android:parentActivityName=".MainActivity"></activity>
+
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.example.alumniapp" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Service to receive messages and registration IDs -->
+        <service android:name=".GCMIntentService" />
+
+        <activity android:name=".Update"></activity>
     </application>
 
 </manifest>
