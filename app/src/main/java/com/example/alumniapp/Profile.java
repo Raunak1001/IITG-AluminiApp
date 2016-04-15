@@ -19,26 +19,26 @@ public class Profile extends AppCompatActivity {
 
         setContentView(R.layout.profile);
         SessionManager sessionManager;
-        TextView email, branch, phone_number,name;
+        TextView email, branch, phone_number, name;
         Button edit;
         sessionManager = new SessionManager(this);
 
         email = (TextView) findViewById(R.id.profile_email);
         branch = (TextView) findViewById(R.id.profile_branch);
         phone_number = (TextView) findViewById(R.id.profile_number);
-        name= (TextView) findViewById(R.id.profile_name);
+        name = (TextView) findViewById(R.id.profile_name);
         edit = (Button) findViewById(R.id.profile_button);
 
 
         email.setText(sessionManager.getEmail());
         branch.setText(sessionManager.getbranch());
-phone_number.setText(sessionManager.getnumber());
+        phone_number.setText(sessionManager.getnumber());
         name.setText(sessionManager.getname());
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Profile.this,Update.class));
+                startActivity(new Intent(Profile.this, Update.class));
             }
         });
 
