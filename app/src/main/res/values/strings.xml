@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AlumniApp</string>
+    <string name="app_name">IITGAA</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,4 +11,13 @@
     <string name="no_announcements">No Reminders Yet</string>
     <string name="ANN_TITLE">title</string>
     <string name="ANN_DESCRIPTION">description</string>
+    <string name="chap">
+        \n\t\tYou could start a local chapter of IITGAA and connect with alumni in your area. In order to do so, you will be expected to do the following:\n\n
+
+1. Organize a get together at least once in every six months. The get together may be self-financed (people who attend pay for themselves).\n
+2. Alternatively, if for some reason it is not possible to organise a self-financed get-together, the IITGAA can help you with financing the event.\n
+3. Post photographs of the get-together online.\n
+4. Collect / update personal information of the attendees and pass it on to the IITGAA.\n
+5. Help collect funds from alumni, if required.
+    </string>
 </resources>

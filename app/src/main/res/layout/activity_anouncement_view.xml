@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
->
+    android:fitsSystemWindows="true">
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="0dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_view"
@@ -23,69 +23,62 @@
     </android.support.design.widget.AppBarLayout>
 
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:padding="15dp">
 
-
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:scrollbars="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-            <android.support.v7.widget.CardView
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:layout_margin="15dp">
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
-                <ScrollView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fillViewport="true">
+                    android:orientation="vertical"
+                    android:scrollbars="vertical">
 
-
-                    <LinearLayout
+                    <com.example.alumniapp.TextViewPlus
+                        android:id="@+id/notice_view_title"
+                        style="@style/TextView.Title.Thin"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:scrollbars="vertical">
-
-                        <com.example.alumniapp.TextViewPlus
-                            android:id="@+id/notice_view_title"
-                            style="@style/TextView.Title.Thin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:gravity="center_horizontal"
-                            android:text="Title"
-                            android:textSize="25sp"
-                            />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="Title"
+                        android:textSize="25sp" />
 
 
-                        <com.example.alumniapp.TextViewPlus
-                            android:id="@+id/notice_view_content"
-                            style="@style/TextView.Body1.Thin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="20dp"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginRight="30dp"
-                            android:layout_marginTop="30dp"
-                            android:textColor="@android:color/black"
-                            android:text="DESCEIPTION"
-                            android:textSize="15sp" />
+                    <com.example.alumniapp.TextViewPlus
+                        android:id="@+id/notice_view_content"
+                        style="@style/TextView.Body1.Thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp"
+                        android:text="DESCEIPTION"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp" />
 
 
-                    </LinearLayout>
+                </LinearLayout>
 
 
-                </ScrollView>
+            </ScrollView>
 
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
