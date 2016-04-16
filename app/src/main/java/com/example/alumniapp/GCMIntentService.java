@@ -54,35 +54,39 @@ public class GCMIntentService extends GCMBaseIntentService {
     @Override
     protected void onMessage(Context context, Intent intent) {
 
-        db=new SQLiteHandler(context);
+        SessionManager sessionManager;
+        sessionManager = new SessionManager(this);
 
-        // Initiating the instances of SessionManager and SQLiteHandler
+        if (sessionManager.isLoggedIn()) {
+            db = new SQLiteHandler(context);
+
+            // Initiating the instances of SessionManager and SQLiteHandler
 //        Toast.makeText(context, "Test", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Received description");
-        String noteJSON = intent.getExtras().getString("title");
+            Log.d(TAG, "Received description");
+            String noteJSON = intent.getExtras().getString("title");
 
-        try {
-            JSONObject obj =new JSONObject(noteJSON);
-            Log.d("TAG",obj.toString());
-            title=obj.getString("title");
-            content=obj.getString("description");
-            db.addAnn(title,content);
-        } catch (JSONException e) {
-            Log.d("TAG","TEST");
+            try {
+                JSONObject obj = new JSONObject(noteJSON);
+                Log.d("TAG", obj.toString());
+                title = obj.getString("title");
+                content = obj.getString("description");
+                db.addAnn(title, content);
+            } catch (JSONException e) {
+                Log.d("TAG", "TEST");
 
-            e.printStackTrace();
+                e.printStackTrace();
+            }
+            Intent new_intent = new Intent("com.sunshine.swc.BRAOADCAST");
+            new_intent.putExtra("EXTRA", noteJSON);
+            context.sendBroadcast(new_intent);
+
+
+            Log.d("noti", title);
+            generateNotification(context, title, content);
+
+
         }
-        Intent new_intent =new Intent("com.sunshine.swc.BRAOADCAST");
-        new_intent.putExtra("EXTRA",noteJSON);
-        context.sendBroadcast(new_intent);
-
-
-        Log.d("noti",title);
-        generateNotification(context,title,content);
-
-
     }
-
     /**
      * Method called on receiving a deleted description
      */
@@ -123,9 +127,10 @@ public class GCMIntentService extends GCMBaseIntentService {
         NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent notificationIntent=new Intent(context,MainActivity.class);
+        Intent notificationIntent=new Intent(context,AnouncementView.class);
         notificationIntent.putExtra("title",notificationTitle);
         notificationIntent.putExtra("description",notificationMessage);
+
 
         // set intent so it does not start a new activity
 
@@ -138,7 +143,7 @@ public class GCMIntentService extends GCMBaseIntentService {
         Notification notification = new Notification.Builder(context)
                 .setContentTitle(notificationTitle)
                 .setContentText(notificationMessage)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.logo)
                 .setContentIntent(intent)
                 .setAutoCancel(true)
                 .build();

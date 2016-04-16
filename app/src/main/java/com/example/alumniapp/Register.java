@@ -216,7 +216,7 @@ name= (EditText) findViewById(R.id.register_name);
 
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                "http://iitgaa.hol.es/app/registerUser.php",
+                "http://iitgaa.hol.es/registerUser.php",
                 json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

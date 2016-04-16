@@ -211,7 +211,7 @@ String branch_string="";
 
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                "http://iitgaa.hol.es/app/updateUser.php",
+                "http://iitgaa.hol.es/updateUser.php",
                 json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

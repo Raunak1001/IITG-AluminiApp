@@ -87,7 +87,7 @@ public final class ServerUtilities {
         String tag_string_req = "req_register";
         Log.d("Sent", jsonToSend.toString());
         JsonObjectRequest strReq = new JsonObjectRequest(Request.Method.POST,
-                "http://iitgaa.org/app/register.php", jsonToSend, new Response.Listener<JSONObject>() {
+                "http://iitgaa.hol.es/register.php", jsonToSend, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
