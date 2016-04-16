@@ -1,92 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <ImageView
-            android:id="@+id/imageToShow"
-            android:layout_width="255dp"
-            android:layout_height="150dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="29dp"
-            android:padding="5dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/iitgnightview" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:elevation="5dp"
+            android:id="@+id/im1"
+            android:src="@drawable/about" />
+
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageToShow"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="38dp"
-            android:text="IIT GUWAHATI ALUMNI ASSOCIATION"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#3d4780"
-            android:textSize="17sp" />
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light."
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/im1"
+            android:id="@+id/tv1"
+            android:text="IIT Guwahati Alumni Association"
+
+            android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView"
-            android:layout_alignStart="@+id/textView"
-            android:layout_below="@+id/textView"
-            android:paddingTop="5dp"
-            android:text="IIT Guwahati Alumni Association is group of IIT Guwahati Alumni taken responsibility to build on community and continously add value to group and society"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#3b3b3b"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-light."
+android:layout_below="@+id/tv1"
+            android:gravity="center_horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="IIT Guwahati Alumni Association is group of IIT Guwahati Alumni taken responsibility to build on community and continuously add value to group and society."
             android:textSize="15sp" />
 
         <RelativeLayout
-            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView2"
-            android:layout_marginTop="75dp"
-            android:background="#bababa">
+            android:layout_gravity="bottom"
+            android:padding="10dp"
+            android:background="#ababab"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:paddingBottom="15dp"
-                android:text="All Rights Reserved"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#404040"
-                android:textSize="14sp" />
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:id="@+id/tv2"
+
+                android:text="Copyright © 2015 IIT Guwahati Alumni Association. "
+
+                android:textColor="#404040" />
+
 
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/textView4"
-                android:paddingTop="15dp"
-                android:text="Copyright &#169; 2015 IIT Guwahati Alumni Asscociation."
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#404040"
-                android:textSize="14sp" />
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/tv2"
+                android:text="All Rights Reserved."
+                android:textColor="#404040" />
+
+
         </RelativeLayout>
-
-
     </RelativeLayout>
 </ScrollView>
