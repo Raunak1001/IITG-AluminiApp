@@ -15,9 +15,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:text="\t\tIITGAA has chapters in a number of locations around the globe. Please reach out to your Chapter President to know about IITGAA activities in your area. We are always on the lookout to start chapters. Please do consider helping us start a chapter in your area if there isn’t one already."
-            android:textSize="15sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="wrap_content"

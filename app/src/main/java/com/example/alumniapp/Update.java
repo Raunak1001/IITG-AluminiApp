@@ -2,10 +2,10 @@ package com.example.alumniapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.sax.StartElementListener;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +21,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,11 +30,11 @@ import java.util.List;
 
 public class Update extends AppCompatActivity {
 
-    EditText password,number,name;
+    EditText password, number, name;
     Button done;
     SessionManager sessionManager;
     MaterialBetterSpinner spinner;
-String branch_string="";
+    String branch_string = "";
     ProgressDialog dialog;
     final String[] error = new String[1];
     private final String TAG = Register.class.getSimpleName();
@@ -47,17 +46,28 @@ String branch_string="";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        email= (FormEditText) findViewById(R.id.update_email);
-        number= (EditText) findViewById(R.id.update_number);
-        password= (EditText) findViewById(R.id.update_password);
-        done= (Button) findViewById(R.id.update_button);
-        layout= (LinearLayout) findViewById(R.id.update_layout);
-        name= (EditText) findViewById(R.id.update_name);
-        dialog=new ProgressDialog(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_update);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        email = (FormEditText) findViewById(R.id.update_email);
+        number = (EditText) findViewById(R.id.update_number);
+        password = (EditText) findViewById(R.id.update_password);
+        done = (Button) findViewById(R.id.update_button);
+        layout = (LinearLayout) findViewById(R.id.update_layout);
+        name = (EditText) findViewById(R.id.update_name);
+        dialog = new ProgressDialog(this);
         dialog.setMessage("Updating Profile");
         dialog.setCancelable(false);
 
-        sessionManager=new SessionManager(this);
+        sessionManager = new SessionManager(this);
         email.setText(sessionManager.getEmail());
         password.setText(sessionManager.getpassword());
         number.setText(sessionManager.getnumber());
@@ -97,7 +107,6 @@ String branch_string="";
                 spinner.showDropDown();
             }
         });
-
 
 
         spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -166,25 +175,24 @@ String branch_string="";
             @Override
             public void onClick(View v) {
 
-                if(email.testValidity()){
-                if(password.getText().length()!=0 && !branch_string.equals("") && name.getText().length()!=0){
+                if (email.testValidity()) {
+                    if (password.getText().length() != 0 && !branch_string.equals("") && name.getText().length() != 0) {
 
-                    if (number.getText().length()==10){
-                        update_user();
+                        if (number.getText().length() == 10) {
+                            update_user();
 
-                    }else {
+                        } else {
 
-                        Snackbar.make(v, "Enter a 10 digit Phone Number", Snackbar.LENGTH_SHORT)
+                            Snackbar.make(v, "Enter a 10 digit Phone Number", Snackbar.LENGTH_SHORT)
+                                    .setAction("Action", null).show();
+                        }
+
+                    } else {
+
+                        Snackbar.make(v, "Enter All Fields", Snackbar.LENGTH_SHORT)
                                 .setAction("Action", null).show();
                     }
-
                 } else {
-
-                    Snackbar.make(v, "Enter All Fields", Snackbar.LENGTH_SHORT)
-                            .setAction("Action", null).show();
-                }
-            }
-            else {
 
                     Snackbar.make(v, "Enter Valid Email Address", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();
@@ -194,7 +202,7 @@ String branch_string="";
         });
     }
 
-    public void update_user(){
+    public void update_user() {
 
         String tag_string_req = "req_tag_register";
         dialog.show();
@@ -204,7 +212,7 @@ String branch_string="";
         params.put("branch", branch_string);
         params.put("password", password.getText().toString());
         params.put("old_email", sessionManager.getEmail());
-        params.put("name",name.getText().toString());
+        params.put("name", name.getText().toString());
 
 
         JSONObject json = new JSONObject(params);
@@ -228,14 +236,13 @@ String branch_string="";
                         setUser();
                         //setrUser(details);
 
-                        Intent intent =new Intent(Update.this, MainActivity.class);
+                        Intent intent = new Intent(Update.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         Snackbar.make(layout, "Profile Updated", Snackbar.LENGTH_SHORT).show();
 
 
                         finish();
                         startActivity(intent);
-
 
 
                         Log.d(TAG, response.toString());
@@ -277,5 +284,5 @@ String branch_string="";
     }
 
 
-    }
+}
 

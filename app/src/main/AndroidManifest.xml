@@ -43,7 +43,9 @@
             android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".Profile"
-            android:parentActivityName=".MainActivity"></activity>
+            android:label="Profile"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme"/>
 
         <receiver
             android:name="com.google.android.gcm.GCMBroadcastReceiver"
@@ -62,7 +64,8 @@
         <!-- Service to receive messages and registration IDs -->
         <service android:name=".GCMIntentService" />
 
-        <activity android:name=".Update"></activity>
+        <activity android:name=".Update"
+            android:label="Update Profile"/>
     </application>
 
 </manifest>
