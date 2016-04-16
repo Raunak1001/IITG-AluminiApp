@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:editTextFormExample="http://schemas.android.com/apk/res-auto"
     android:id="@+id/login_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:fillViewport="true">
 
     <FrameLayout
@@ -12,10 +12,10 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
             android:id="@+id/register_layout"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,58 +27,57 @@
 
                 <EditText
                     android:id="@+id/register_name"
-                    android:imeOptions="actionDone"
-                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
                     android:hint="Name"
-                    />
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+
                 <com.andreabaccega.widget.FormEditText
 
                     android:id="@+id/register_emailId"
                     style="@android:style/Widget.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:hint="Email Id:"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:hint="Email Id"
                     android:inputType="textEmailAddress"
-
                     editTextFormExample:testType="email" />
+
                 <EditText
                     android:id="@+id/register_phone_number"
-                    android:imeOptions="actionDone"
-                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
                     android:hint="Phone Number"
-                    />
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
 
                 <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                     android:id="@+id/choice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="20dp"
                     android:hint="Choose Department"
-                    android:textAlignment="center"
-                    />
+                    android:textAlignment="center" />
 
 
                 <EditText
                     android:id="@+id/register_password"
-                    android:imeOptions="actionDone"
-                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
                     android:hint="Password"
-                    />
-
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
 
 
                 <Button
@@ -91,7 +90,7 @@
                     android:paddingLeft="40dp"
                     android:paddingRight="40dp"
                     android:text="REGISTER"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@android:color/white"
                     android:textSize="20sp" />
 
 
