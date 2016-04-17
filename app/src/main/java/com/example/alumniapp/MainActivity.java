@@ -82,11 +82,20 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.container, new HomeTabFragment()).commit();
-        navigationView.getMenu().getItem(0).setChecked(true);
+        if(sessionManager.isFirstPressed()) {
+            mFragmentManager = getSupportFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mFragmentTransaction.replace(R.id.container, new HomeTabFragment()).commit();
+            navigationView.getMenu().getItem(0).setChecked(true);
+            sessionManager.setFirstPress(false);
+
+        }
+        else {
+            sessionManager.setFirstPress(true);
+            super.onBackPressed();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }

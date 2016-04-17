@@ -33,6 +33,8 @@ public class SessionManager {
     private static final String KEY_NUMBER="number";
     private static final String KEY_SAVED_USERNAME = "savedUsername";
     private static final String KEY_NAME="name";
+    private static final String KEY_FIRSTPRESS="press";
+
 
 
 
@@ -75,7 +77,15 @@ public class SessionManager {
 
         Log.d(TAG, "User login session modified!");
     }
+    public void setFirstPress(boolean isLoggedIn) {
 
+        editor.putBoolean(KEY_FIRSTPRESS, isLoggedIn);
+
+
+        editor.commit();
+
+        Log.d(TAG, "User login session modified!");
+    }
     public void setEmail(String email) {
 
         editor.putString(KEY_EMAIL, email);
@@ -116,6 +126,10 @@ public class SessionManager {
     public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGED_IN, false);
     }
+    public boolean isFirstPressed() {
+        return pref.getBoolean(KEY_FIRSTPRESS, true);
+    }
+
     public String getEmail() {
         return pref.getString(KEY_EMAIL,"");
     }
