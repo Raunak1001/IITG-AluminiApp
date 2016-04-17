@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     FragmentManager mFragmentManager;
     NavigationView navigationView;
     AsyncTask<Void, Void, Void> mRegisterTask;
-    TextView navText,navIcon;
+    TextView navText, navIcon;
     SessionManager sessionManager;
 
     @Override
@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity
         navIcon = (TextView) v.findViewById(R.id.nav_icon);
 
         navText.setText(sessionManager.getname());
-        navIcon.setText(sessionManager.getname().substring(0,1));
+        navIcon.setText(sessionManager.getname().substring(0, 1));
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Profile.class));
+                startActivity(new Intent(MainActivity.this, Profile.class));
             }
         });
 
@@ -85,9 +85,8 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
+        //super.onBackPressed();
     }
 
 
@@ -144,6 +143,13 @@ public class MainActivity extends AppCompatActivity
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.container, new Blog()).commit();
             navigationView.getMenu().getItem(3).setChecked(true);
+
+        } else if (id == R.id.nav_follow) {
+
+            mFragmentManager = getSupportFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mFragmentTransaction.replace(R.id.container, new Follow()).commit();
+            navigationView.getMenu().getItem(4).setChecked(true);
 
         }
 

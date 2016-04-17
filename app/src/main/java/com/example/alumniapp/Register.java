@@ -13,9 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.andreabaccega.widget.EditTextValidator;
 import com.andreabaccega.widget.FormEditText;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -73,7 +71,7 @@ name= (EditText) findViewById(R.id.register_name);
 
         categories.add("Civil Engineering");
 
-        categories.add("ComputerScience & Engineering");
+        categories.add("Computer Science & Engineering");
 
         categories.add("Design");
 

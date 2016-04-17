@@ -83,7 +83,7 @@ public class Update extends AppCompatActivity {
 
         categories.add("Civil Engineering");
 
-        categories.add("ComputerScience & Engineering");
+        categories.add("Computer Science & Engineering");
 
         categories.add("Design");
 

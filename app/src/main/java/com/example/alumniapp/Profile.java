@@ -16,17 +16,21 @@ public class Profile extends AppCompatActivity {
     SQLiteHandler db;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_profile);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 
@@ -54,6 +58,7 @@ public class Profile extends AppCompatActivity {
                 startActivity(new Intent(Profile.this, Update.class));
             }
         });
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
