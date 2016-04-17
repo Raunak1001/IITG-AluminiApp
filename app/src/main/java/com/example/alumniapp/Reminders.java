@@ -1,5 +1,6 @@
 package com.example.alumniapp;
 
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +22,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
 public class Reminders extends Fragment {
 
 
@@ -38,7 +43,7 @@ public class Reminders extends Fragment {
                 newNotice.put("description", noticeJSON.getString("description"));
                 announcemetAdapter.add(announcemetAdapter.getItemCount(), newNotice);
 
-                layoutmanager.scrollToPosition(announcemetAdapter.getItemCount()-1);
+                recycleView.scrollToPosition(announcemetAdapter.getItemCount()-1);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -72,7 +77,7 @@ public class Reminders extends Fragment {
         recycleView = (RecyclerView) view.findViewById(R.id.announcement_recyclerView);
         params = new HashMap<>();
         list = new ArrayList<>();
-        layout= (LinearLayout) view.findViewById(R.id.linear_layout);
+layout= (LinearLayout) view.findViewById(R.id.linear_layout);
 
         layoutmanager = new LinearLayoutManager(getActivity());
         layoutmanager.setReverseLayout(true);
@@ -80,7 +85,7 @@ public class Reminders extends Fragment {
         recycleView.setHasFixedSize(false);
 
         database = new SQLiteHandler(getActivity().getApplicationContext());
-        // database.addAnn("Test","Body");
+       // database.addAnn("Test","Body");
 
         list = database.getAnn();
 
@@ -93,7 +98,7 @@ public class Reminders extends Fragment {
 
 
         recycleView.setAdapter(announcemetAdapter);
-        layoutmanager.scrollToPosition(announcemetAdapter.getItemCount() - 1);
+        recycleView.scrollToPosition(announcemetAdapter.getItemCount() - 1);
     }
 
 

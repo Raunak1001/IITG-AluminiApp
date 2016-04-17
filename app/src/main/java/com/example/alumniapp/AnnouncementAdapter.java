@@ -50,6 +50,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 final String ann_title=announcemnt.get(context.getString(R.string.ANN_TITLE));
         holder.title.setText(ann_title);
         holder.description.setText(announcemnt.get(context.getString(R.string.ANN_DESCRIPTION)));
+        if(!ann_title.isEmpty())
         holder.icon.setText(ann_title.substring(0, 1));
 
         holder.layout.setOnClickListener(new View.OnClickListener() {

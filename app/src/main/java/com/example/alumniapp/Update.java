@@ -280,6 +280,7 @@ public class Update extends AppCompatActivity {
         sessionManager.setPAssword(password.getText().toString());
         sessionManager.setBranch(branch_string);
         sessionManager.setNumber(number.getText().toString());
+        sessionManager.setName(name.getText().toString());
 
     }
 
