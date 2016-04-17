@@ -58,7 +58,7 @@
                     android:layout_marginRight="10dp"
                     android:hint="Phone Number"
                     android:imeOptions="actionDone"
-                    android:inputType="text" />
+                    android:inputType="number" />
 
 
                 <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner

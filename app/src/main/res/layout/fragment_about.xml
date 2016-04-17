@@ -74,8 +74,18 @@ android:layout_below="@+id/tv1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
+                android:id="@+id/tv3"
                 android:layout_below="@+id/tv2"
                 android:text="All Rights Reserved."
+                android:textColor="#404040" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/tv3"
+                android:text="Developed and maintained by Digital Ops Team,IIT Guwahati."
                 android:textColor="#404040" />
 
 
