@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name :"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
 
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
 
         </LinearLayout>
@@ -58,14 +58,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email :"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
 
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
 
         </LinearLayout>
@@ -83,14 +83,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone Number :"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
 
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
 
         </LinearLayout>
@@ -108,7 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
 
@@ -116,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Branch :"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
 
         </LinearLayout>
@@ -134,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:text="Edit Profile" />
 
         <Button
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="Log Out" />
 
 
