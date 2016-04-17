@@ -140,13 +140,26 @@ public class GCMIntentService extends GCMBaseIntentService {
                 PendingIntent.getActivity(context, (int) System.currentTimeMillis(), notificationIntent, 0);
 
 
-        Notification notification = new Notification.Builder(context)
-                .setContentTitle(notificationTitle)
-                .setContentText(notificationMessage)
-                .setSmallIcon(R.drawable.logo)
-                .setContentIntent(intent)
-                .setAutoCancel(true)
-                .build();
+        Notification notification = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            notification = new Notification.Builder(context)
+                    .setContentTitle(notificationTitle)
+                    .setContentText(notificationMessage)
+                    .setSmallIcon(R.drawable.logo)
+                    .setContentIntent(intent)
+                    .setAutoCancel(true)
+                    .build();
+        }else{
+            notification = new Notification.Builder(context)
+                    .setContentTitle(notificationTitle)
+                    .setContentText(notificationMessage)
+                    .setSmallIcon(R.drawable.logo)
+                    .setContentIntent(intent)
+                    .setAutoCancel(true)
+                    .getNotification();
+
+
+        }
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
         // Play default notification sound

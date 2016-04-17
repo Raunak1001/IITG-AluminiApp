@@ -279,7 +279,7 @@ name= (EditText) findViewById(R.id.register_name);
     public void setUser(JSONObject details) throws JSONException {
         //  db.addAnn((String) notice.get("title"),notice.getString("description"));
         sessionmanager.setEmail(details.getString("email"));
-        sessionmanager.setPAssword(details.getString("password"));
+        sessionmanager.setPAssword(pass_string);
         sessionmanager.setBranch(details.getString("branch"));
         sessionmanager.setNumber(details.getString("number"));
         sessionmanager.setName(details.getString("name"));
