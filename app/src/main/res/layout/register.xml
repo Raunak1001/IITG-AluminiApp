@@ -65,10 +65,10 @@
                     android:id="@+id/choice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_gravity="start"
                     android:layout_marginTop="20dp"
                     android:hint="Choose Department"
                     android:textAlignment="textStart" />
@@ -84,7 +84,6 @@
                     android:hint="Password"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword" />
-
 
                 <Button
                     android:id="@+id/register"
@@ -102,5 +101,5 @@
 
             </LinearLayout>
         </LinearLayout>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </FrameLayout>
+    </FrameLayout>
 </ScrollView>

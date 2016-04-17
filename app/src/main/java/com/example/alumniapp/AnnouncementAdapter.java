@@ -1,6 +1,8 @@
 package com.example.alumniapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +20,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView title,description,icon;
+        public TextView title, description, icon;
         SQLiteHandler db;
         LinearLayout layout;
 
@@ -46,30 +48,44 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         final HashMap<String, String> announcemnt = adapterDataset.get(position);
-
-final String ann_title=announcemnt.get(context.getString(R.string.ANN_TITLE));
+        final String ann_title = announcemnt.get(context.getString(R.string.ANN_TITLE));
         holder.title.setText(ann_title);
         holder.description.setText(announcemnt.get(context.getString(R.string.ANN_DESCRIPTION)));
-        if(!ann_title.isEmpty())
-        holder.icon.setText(ann_title.substring(0, 1));
+        if (!ann_title.isEmpty())
+            holder.icon.setText(ann_title.substring(0, 1));
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context,AnouncementView.class);
+                Intent intent = new Intent(context, AnouncementView.class);
 
-                intent.putExtra("title",ann_title);
-                intent.putExtra("description",announcemnt.get(context.getString(R.string.ANN_DESCRIPTION)));
+                intent.putExtra("title", ann_title);
+                intent.putExtra("description", announcemnt.get(context.getString(R.string.ANN_DESCRIPTION)));
 
                 context.startActivity(intent);
 
             }
         });
 
+        holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+                alertDialog.setMessage("Delete Reminder ?");
+                alertDialog.setButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        holder.db.remAnn(ann_title, announcemnt.get(context.getString(R.string.ANN_DESCRIPTION)));
+                        remove(position);
+                    }
+                });
+                alertDialog.show();
+                return false;
+            }
+        });
     }
 
     public void add(int position, HashMap<String, String> item) {
-        adapterDataset.add(position , item);
+        adapterDataset.add(position, item);
         notifyItemInserted(position);
     }
 

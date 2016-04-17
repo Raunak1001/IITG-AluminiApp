@@ -107,6 +107,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return personalNotes;
     }
 
+    public void remAnn(String title, String description) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selectQuery = "DELETE FROM " + TABLE_ANNOUNCEMENTS + " WHERE " + KEY_ANN_TITLE + " = '" + title + "' AND " + KEY_ANN_DESCRIPTION + " = '" + description+"'";
+        db.execSQL(selectQuery);
+        Log.d(TAG, "New user inserted into sqlite: ");
+    }
+
     public void deleteUsers() {
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
